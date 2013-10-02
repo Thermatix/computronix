@@ -30,6 +30,9 @@ gem "omniauth-paypal"
 #PayPal Rest API
 gem 'paypal-sdk-rest'
 
+#for currency conversion
+gem "google_currency", "~> 2.3.0"
+
 group :development, :test do
   # Use debugger
   gem 'debugger'

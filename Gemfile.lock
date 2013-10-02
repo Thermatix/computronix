@@ -67,6 +67,9 @@ GEM
       i18n (~> 0.5)
     faraday (0.8.8)
       multipart-post (~> 1.2.0)
+    google_currency (2.3.0)
+      money (~> 5.1.1)
+      multi_json
     haml (4.0.3)
       tilt
     hashie (2.0.5)
@@ -91,6 +94,8 @@ GEM
     mime-types (1.25)
     mini_portile (0.5.1)
     minitest (4.7.5)
+    money (5.1.1)
+      i18n (~> 0.6.0)
     multi_json (1.8.0)
     multipart-post (1.2.0)
     nokogiri (1.6.0)
@@ -214,6 +219,7 @@ DEPENDENCIES
   email_spec
   factory_girl_rails (~> 4.0)
   faker
+  google_currency (~> 2.3.0)
   haml (~> 4.0.3)
   jbuilder (~> 1.2)
   jquery-rails
