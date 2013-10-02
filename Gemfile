@@ -21,14 +21,14 @@ gem "rmagick", "~> 2.13.2"
 #for tab based navigation
 gem "tabs_on_rails"
 
-#for templaiting
-gem "haml", "~> 4.0.3"
-
 #for paypal authentication
 gem "omniauth-paypal"
 
 #PayPal Rest API
 gem 'paypal-sdk-rest'
+
+#for currency conversion
+gem "google_currency", "~> 2.3.0"
 
 group :development, :test do
   # Use debugger

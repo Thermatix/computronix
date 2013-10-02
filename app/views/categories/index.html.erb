@@ -1,0 +1,19 @@
+<h1><%= @category.nil? ? 'Main categories' : @category.title %></h1>
+<table>
+<% @categories.each do |category| %>
+<tr>
+  <td><%= link_to category.title, category_path(category) %></td>
+  <td><%= link_to 'Edit', [:edit,category] %></td>
+  <td><%= link_to 'Delete', category, method: :delete, data: { confirm: 'Are you sure? this will also delete all child catagories'}%></td>
+</tr>
+<% end %>
+</table>
+<p>
+
+  <% if child? %>
+
+  <%= link_to 'back', first_child_catagory? %> | <%= link_to 'new sub-category', new_category_path(@category) %>
+  <% else %>
+    <%= link_to 'new root-category', [:new, :category] %>
+  <% end %>
+</p>

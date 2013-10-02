@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  payment_xid: MyString
+  payer_xid: MyString
+  first_name: MyString
+  last_name: MyString
+  payer_email: MyString
+
+two:
+  payment_xid: MyString
+  payer_xid: MyString
+  first_name: MyString
+  last_name: MyString
+  payer_email: MyString
