@@ -1,15 +1,11 @@
 module CategoriesHelper
 
   def child?
-    if @category
-      true
-    else
-      false
-    end
+    @category && !@category.parent.nil?
   end
 
   def first_child_catagory?
-    @category.parent.blank? ? :categories : @category.parent
+    @category.parent.nil? ? :categories : @category.parent
   end
 
 end

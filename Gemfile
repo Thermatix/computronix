@@ -21,9 +21,6 @@ gem "rmagick", "~> 2.13.2"
 #for tab based navigation
 gem "tabs_on_rails"
 
-#for templaiting
-gem "haml", "~> 4.0.3"
-
 #for paypal authentication
 gem "omniauth-paypal"
 

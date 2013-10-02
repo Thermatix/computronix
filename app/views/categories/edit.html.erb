@@ -1,6 +1,9 @@
 <h1>Edit catagory</h1>
 <%= render 'form' %>
 <div>
-  <%= ap @catagory.inspect
-  link_to 'back', @category.parent%>
+  <% if child? %>
+     <%= link_to 'back', @category.parent %>
+   <% else %>
+     <%= link_to 'back', :categories %>
+   <% end %>
 </div>

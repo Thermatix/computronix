@@ -70,8 +70,6 @@ GEM
     google_currency (2.3.0)
       money (~> 5.1.1)
       multi_json
-    haml (4.0.3)
-      tilt
     hashie (2.0.5)
     hike (1.2.3)
     httpauth (0.2.0)
@@ -220,7 +218,6 @@ DEPENDENCIES
   factory_girl_rails (~> 4.0)
   faker
   google_currency (~> 2.3.0)
-  haml (~> 4.0.3)
   jbuilder (~> 1.2)
   jquery-rails
   omniauth-paypal
