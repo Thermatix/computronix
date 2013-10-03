@@ -1,0 +1,18 @@
+<h1 style='text-align:center;'>Products set up</h1>
+<section class='bar'>
+  <%= link_to 'back', :root %>|<%= link_to 'new product', [:new, :product ] %>
+</section>
+<aside class='nav' style='float:left;'>
+  <% if Category.roots %>
+    <%= render "tree", categories: Category.roots %>
+  <% else %>
+    No Catagories
+  <% end %>
+</aside>
+<section class='content 'style='margin-left:auto;margin-right:auto;'>
+  <% if !Category.roots %>
+    <h2>Please set up some product <%= link_to 'categories', 'categories '%> before continuing<h2>
+  <% else %>
+    <%= render "product_listing", category: @category, products: @products %>
+  <% end %>
+</section>

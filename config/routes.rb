@@ -1,8 +1,10 @@
 Computronix::Application.routes.draw do
 
-  get "categories/index"
+  resources :products
 
-  resources :categories
+  resources :categories do
+    resources :products
+  end
 
-  root to: "categories#index"
+  root to: "setup#index"
 end
