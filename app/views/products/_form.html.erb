@@ -1,0 +1,42 @@
+<%= form_for(@product) do |f| %>
+  <% if @product.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@product.errors.count, "error") %> prohibited this idea from being saved:</h2>
+
+      <ul>
+      <% @product.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <section>
+    <div class='title'>
+      <%= f.label :title %><br>
+      <%= f.text_field :title %>
+    </div>
+    <div class='description'>
+      <%= f.label :description %><br>
+      <%= f.text_field :description %>
+    </div>
+  </section>
+  <section>
+    <div class='value'>
+      <%= f.label :value %><br>
+      <%= f.text_field :value %>
+    </div>
+    <div class='stock'>
+      <%= f.label :stock %><br>
+      <%= f.text_field :stock %>
+    </div>
+    <div class='category'>
+      <%= f.label :category %><br>
+      <%= f.collection_select(:category_id, Category.all, :id, :title, {prompt: true,disabled: lambda{|category| category.root?}})%>
+    </div>
+  </section>
+  <div class='actions'>
+    <%= f.submit %>
+  </div>
+<% end %>
+
+

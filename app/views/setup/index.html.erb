@@ -1,0 +1,5 @@
+<h1> Website admin page <h1>
+
+<% @setup.each do |item| %>
+ <%= link_to item.capitalize, item  %><br>
+<% end %>

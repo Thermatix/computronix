@@ -1,0 +1,8 @@
+<nav>
+  <ul>
+    <% categories.each do |category| %>
+      <li><%= link_to category.title, [category, :products] %></li>
+      <%= render "tree", categories: category.children  %>
+    <% end %>
+  </ul>
+</nav>

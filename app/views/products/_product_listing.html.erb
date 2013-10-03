@@ -1,0 +1,9 @@
+<h2> Products for category: <%= category ? category.title : "All" %> </h2>
+<p id="notice"><%= notice %></p>
+  <%if products  %>
+    <% products.each do |product| %>
+      <article>
+        <%= render 'product', product: product %>
+      </article>
+    <% end %>
+  <% end %>

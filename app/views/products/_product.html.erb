@@ -1,0 +1,24 @@
+<section class='info' style='float:left;'>
+  <div class='title' id=<%= "#id_#{product.id}" %>>
+    <%= "Title: #{product.title}"%>
+  </div>
+  <div class='description'>
+    <%= "Description:\n #{product.description}" %>
+  </div>
+</section>
+<section class='attributes'>
+  <div class='value'>
+    <%= "Value():#{product.value}" %>
+  </div>
+  <div class='stock'>
+    <%= "Stock: #{product.stock}"%>
+  </div>
+</section>
+<section class='actions'>
+  <div class='edit'>
+    <%= edit_button_for product %>
+  </div>
+  <div class='delete'>
+    <%= link_to 'Delete', product, method: :delete, data: { confirm: 'Are you surte?'} %>
+  </div>
+</section>
