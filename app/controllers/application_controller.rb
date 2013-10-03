@@ -7,7 +7,6 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery with: :exception
 
-  before_filter :protect
   def protect
 
     if Rails.env.production?

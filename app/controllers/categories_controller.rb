@@ -1,4 +1,5 @@
 class CategoriesController < ApplicationController
+  before_action :load_category, only: [:show, :edit, :update, :destroy]
   before_filter :protect
 
   def index
@@ -16,11 +17,9 @@ class CategoriesController < ApplicationController
 
   def new
     @category = Category.new
-    @category.parent = Category.find(params[:id]) unless params[:id].nil?
   end
 
   def edit
-    load_category
   end
 
   def create
