@@ -1,0 +1,6 @@
+<% tree_level += 1 %>
+<% categories.each do |category| %>
+  <li <%= nav_button_class(tree_level) %>>
+    <%= link_to category.title, nav_path(category) %></li>
+  <%= render "nav", categories: category.children,tree_level: tree_level  %>
+<% end %>

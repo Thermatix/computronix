@@ -1,0 +1,5 @@
+<% if product.images %>
+  <% product.all_images.each do |image| %>
+    <%= image_tag(image[0] ,alt: image[1],class:'image' )%>
+  <% end %>
+<% end %>

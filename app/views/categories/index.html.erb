@@ -1,8 +1,9 @@
 <h1><%= @category.nil? ? 'Main categories' : @category.title %></h1>
 <section class='bar'>
-  <%= link_to 'back', :root %>|<% if child? %>
-    <%= link_to 'back', first_child_catagory? %> | <%= link_to 'new sub-category', new_category_path(@category) %>
+  <% if child? %>
+    <%= link_to 'back', first_child_catagory? if child? %> | <%= link_to 'new sub-category', new_category_path(@category) if @category.ancestors.length < 3 %>
   <% else %>
+  <%= link_to 'back', :setup %> |
     <%= link_to 'new root-category', [:new, :category] %>
   <% end %>
 </section>
