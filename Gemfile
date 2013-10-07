@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.0'
+gem 'rails', '>= 4.0.0'
 
 # Postgres as the database for Active Record
 gem 'pg'
@@ -29,6 +29,9 @@ gem 'paypal-sdk-rest'
 
 #for currency conversion
 gem "google_currency", "~> 2.3.0"
+
+#for slugs
+gem "friendly_id"#, "~> 4.0.10.1"
 
 group :development, :test do
   # Use debugger
