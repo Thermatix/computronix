@@ -1,0 +1,183 @@
+// page size constants
+$window_w: screen-width;
+$window_h: screen-height;
+$sideBars_w: 180px;
+$centerPage_w: 800px;
+$content_h: 1000px;
+$head_foot_h: 150px;
+$product_h:450px;
+$page_w: ($sideBars_w * 2) + $centerPage_w + 6px;
+$page_h: ($head_foot_h * 2) + $content_h + 6px;
+$sideBar_w: ($window_w - $page_w)/2;
+body
+{
+  width: 100%;
+}
+.filler
+{
+background-color: black;
+
+  &.left
+  {
+    display: inline-block;
+    width: $sideBar_w;
+    height: $page_h;
+  }
+
+  &.right
+  {
+
+    display: inline-block;
+    width: $sideBar_w;
+    height: $page_h;
+  }
+}
+
+.body
+{
+
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+  width: $page_w;
+  height: $page_h;
+
+  .header
+  {
+
+    &.bar
+    {
+      border: 1px solid black;
+      height: $head_foot_h;
+      width: $page_w - 2px;
+    }
+  }
+
+  .content
+  {
+
+    width: $page_w;
+    height: $content_h;
+    .nav
+    {
+
+      &.bar
+      {
+        list-style: none;
+        float: left;
+        border: 1px solid black;
+        width: $sideBars_w;
+        height: $content_h;
+      }
+
+      &.button
+      {
+        text-align: left;
+        padding-left:0px;
+      }
+    }
+    .center
+    {
+
+      &.page
+      {
+        float: left;
+        border: 1px solid black;
+        width: $centerPage_w;
+        height: $content_h;
+      }
+
+      .product
+      {
+        border: 1px solid black;
+        width: 100%;
+        height: $product_h;
+        .infomation
+        {
+
+          .specification
+          {
+            border: 1px solid black;
+
+            float: left;
+            width: 49.5%;
+            height: $product_h;
+            .title
+            {
+              text-align: center;
+            }
+
+            .images
+            {
+              border: 1px solid black;
+
+              overflow-x: auto;
+              overflow: -moz-scrollbars-horizontal;
+              height:50%;
+              width:97%;
+              margin-left: 5px;
+              .image
+              {
+                display: inline-block;
+                float: left;
+              }
+            }
+
+            .description
+            {
+              border: 1px solid black;
+              margin: 5px;
+            }
+          }
+
+          .attributes
+          {
+            border: 1px solid black;
+            float: right;
+            width: 50%;
+            height: $product_h;
+            .value
+            {
+
+            }
+
+            .stock
+            {
+
+            }
+            .actions
+            {
+
+            }
+          }
+        }
+
+
+      }
+    }
+
+    .info
+    {
+      &.bar
+      {
+        float: left;
+        border: 1px solid black;
+        width: $sideBars_w;
+        height: $content_h;
+      }
+
+    }
+  }
+
+  .footer
+  {
+
+    &.bar
+    {
+      border: 1px solid black;
+      height: $head_foot_h;
+      width: $page_w - 2px;
+    }
+  }
+
+}

@@ -1,8 +1,16 @@
+class Parentage < ActiveModel::Validator
+ def validate(record)
+  if record.ancestors.length > 2
+    record.errors[:base] << "Can't have more then two ancestors"
+  end
+ end
+end
 class Category < ActiveRecord::Base
   has_many :products
 
   has_many :children, class_name: 'Category', foreign_key: 'parent_id', dependent: :destroy
   belongs_to :parent, class_name: 'Category'
+  validates_with Parentage
 
   scope :roots, -> {where(parent_id: nil)}
 

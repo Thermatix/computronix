@@ -1,0 +1,26 @@
+<section class='infomation'>
+  <section class='specification'>
+    <div class='title'>
+      <%= "Product: #{product.title}" %>
+    </div>
+    <figure class='images'>
+      <%= render 'images', product: product %>
+    </figure>
+    <div class='description'>
+      <%= "Description:
+      #{product.description}" %>
+    </div>
+  </section>
+  <section class='attributes'>
+    <div class='value'>
+      <%= "Value(#{currency}):#{curr_convert((product.value||0.00),currency)}" %>
+    </div>
+    <div class='stock'>
+      <%= "Stock Level:#{product.stock}" %>
+    </div>
+    <section class='actions'>
+      <div class='button buy-paypal'>
+      </div>
+    </section>
+  </section>
+</section>

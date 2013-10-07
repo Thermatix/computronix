@@ -1,0 +1,7 @@
+<% Array(categories).flatten.each do |category| %>
+  <% Array(category.all_products).flatten.each do |product| %>
+    <article class='product'>
+      <%= render 'product',product: product,currency: currency %>
+    </article>
+  <% end %>
+<% end %>
