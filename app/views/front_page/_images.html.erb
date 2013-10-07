@@ -1,5 +1,6 @@
 <% if product.images %>
   <% product.all_images.each do |image| %>
-    <%= image_tag(image[0] ,alt: image[1],class:'image' )%>
+    <% Rails.logger.debug image.inspect %>
+    <%= image_tag(image[0] ,alt: image[1],class:'image',size: image[2] )%>
   <% end %>
 <% end %>
