@@ -1,4 +1,7 @@
+
+
 class Product < ActiveRecord::Base
+
   belongs_to :category
 
   def all_images
@@ -19,26 +22,33 @@ class Product < ActiveRecord::Base
   end
 
   def one_click_buy
-    unique_invoice_id = random(10)
-    values = {
-      buisness: 'Computronix@test.co.uk',
-      cmd: '_cart',
-      upload: 1,
-      :return => '/payment/success/',
-      invoice: unique_invoice_id
-    }
-    values.merge!({
-      "amount_1" => self.value,
-      "item_name_1" => self.title,
-      "item_number_1" => self.id,
-      "quantity_1" => '1'
-      })
-
-    "https://www.sandbox.paypal.com/cgi-bin/webscr?" + values.to_query
-    #https://www.sandbox.paypal.com/cgi-bin/webscr?amount_1=&buisness=rpgjaguar-facilitator%40gmail.com&cmd=_cart&invoice=4517182822301241&item_name_1=some+game&item_number_1=2&quantity_1=1&return=%2Fpayment%2Fsuccess&upload=1
+    return  {
+      intent: 'sale',
+      redirect_urls: {
+        return_url: 'http://127.0.0.1:3000/'
+      },
+      payer:{
+        payment_method: 'paypal',
+        },
+      transactions: [{
+        item_list: {
+          items:[{
+            name:self.title,
+            sku: self.id,
+            price: self.value,
+            currency: 'GBP',
+            quantity: 1
+          }]},
+          amount:{
+            total: self.value,
+            currency: 'GBP',
+          },
+          description: "This is a one click buy payment for a: #{self.title}"
+        }],
+      }
   end
 
-  def random(times)
+  def random times
     temp = ""
     for i in 1..times do
       temp += r(1..(r(1..i)*10)).to_s
@@ -46,7 +56,7 @@ class Product < ActiveRecord::Base
     temp
   end
 
-  def r(range)
+  def r range
     Random.new.rand(range)
   end
 

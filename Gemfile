@@ -33,6 +33,8 @@ gem "google_currency", "~> 2.3.0"
 #for slugs
 gem "friendly_id"#, "~> 4.0.10.1"
 
+gem "oauth", "~> 0.4.7"
+
 group :development, :test do
   # Use debugger
   gem 'debugger'
