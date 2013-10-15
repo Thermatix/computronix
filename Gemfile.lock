@@ -99,6 +99,7 @@ GEM
     multipart-post (1.2.0)
     nokogiri (1.6.0)
       mini_portile (~> 0.5.0)
+    oauth (0.4.7)
     oauth2 (0.8.1)
       faraday (~> 0.8)
       httpauth (~> 0.1)
@@ -222,6 +223,7 @@ DEPENDENCIES
   google_currency (~> 2.3.0)
   jbuilder (~> 1.2)
   jquery-rails
+  oauth (~> 0.4.7)
   omniauth-paypal
   paypal-sdk-rest
   pg
