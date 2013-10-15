@@ -20,7 +20,7 @@
     </div>
     <section class='actions'>
       <div class='button buy-paypal'>
-        <%= link_to 'Buy with Paypal', new_payment_path(product.one_click_buy) %>
+        <%= link_to 'One click checkout with Paypal', new_payment_path(one_click_Buy: product.id) %>
       </div>
     </section>
   </section>

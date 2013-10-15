@@ -22,30 +22,51 @@ class Product < ActiveRecord::Base
   end
 
   def one_click_buy
-    return  {
-      intent: 'sale',
-      redirect_urls: {
-        return_url: 'http://127.0.0.1:3000/'
-      },
-      payer:{
-        payment_method: 'paypal',
-        },
-      transactions: [{
-        item_list: {
-          items:[{
-            name:self.title,
-            sku: self.id,
-            price: self.value,
-            currency: 'GBP',
-            quantity: 1
-          }]},
-          amount:{
-            total: self.value,
-            currency: 'GBP',
+    item_hash = self.hash_for_items 1
+    description = "This is a one click buy payment for a: #{self.title}"
+    pay_method = 'paypal'
+    total = self.value
+    payment_hash(pay_method,item_hash,description, total)
+  end
+  def payment_hash pay_method, items={}, description,total
+    {
+          intent: 'sale',
+          redirect_urls: {
+            return_url: 'http://127.0.0.1:3000/payments/execute',
+            cancel_url:'http://127.0.0.1:3000/payments/cancel'
           },
-          description: "This is a one click buy payment for a: #{self.title}"
-        }],
-      }
+          payer:
+            payment_with(pay_method),
+          transactions: [{
+            item_list: {
+              items:[items]},
+              amount:{
+                total: total,
+                currency: 'GBP',
+              },
+              description: description
+            }],
+          }
+  end
+
+
+  def payment_with pay_method
+    case pay_method
+    when 'paypal'
+      return {payment_method: 'paypal'}
+    else
+      raise ArgumentError, "Invalid payment time, expected(paypal,creditcard) got #{pay_method}"
+    end
+  end
+
+  def hash_for_items quantity
+    {
+      name:self.title,
+      sku: self.id,
+      price: self.value,
+      currency: 'GBP',
+      quantity: quantity
+    }
   end
 
   def random times

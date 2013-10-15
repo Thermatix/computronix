@@ -11,7 +11,6 @@ class CategoriesController < ApplicationController
   def show
     @category = Category.find(params[:id])
     @categories = @category.children
-    @categories.each {|category| ap category }
     render :action => :index
   end
 
