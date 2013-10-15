@@ -91,84 +91,39 @@ position: relative;
         width: $sideBars_w;
         height: $content_h;
         background-color: $background_colour;
+        ul{list-style: none;}
+
       }
 
       &.button
       {
-        a{ display: block;}
-        a:link, a:visited{ color: $off_white; text-decoration:none;}
-        height: 25px;
+        display: block;
+        color: $off_white; text-decoration:none;
         margin-bottom: 2px;
         margin-left: 0px;
         text-shadow: $text_outline;
         position: relative;
-
+        width: 129%;
+        height: 25px;
+        text-align: center;
         padding-left:0px;
         padding-top: 5px;
-        list-style: none;
         margin-left: -29%;
+        background-color: $button;
+      }
+      &.button:hover
+      {
+        background-color: $button_hover;
+        box-shadow: 0px 0px 10px  $button_hover;
+        bottom: 1px;
+      }
 
-        &.nav_root
-        {
-
-          background-color: $button;
-        }
-
-        &.nav_major
-        {
-
-          background-color: $button;
-        }
-
-        &.nav_minor
-        {
-          background-color: $button;
-        }
-
-        &.nav_root:hover
-        {
-          background-color: $button_hover;
-          box-shadow: 0px 0px 10px  $button_hover;
-          bottom: 1px;
-        }
-
-        &.nav_major:hover
-        {
-          background-color: $button_hover;
-          box-shadow: 0px 0px 10px  $button_hover;
-          bottom: 1px;
-        }
-
-        &.nav_minor:hover
-        {
-          background-color: $button_hover;
-          box-shadow: 0px 0px 10px  $button_hover;
-          bottom: 1px;
-        }
-
-        &.nav_root:active
-        {
-          color: white;
-          background-color: $button_hover;
-          box-shadow: 0px 0px 20px  $button_hover;
-          top:2px;
-        }
-
-        &.nav_major:active
-        {
-          color: white;
-          background-color: $button_hover;
-          box-shadow: 0px 0px 20px  $button_hover;
-          top:2px;
-        }
-
-        &.nav_minor:active
-        {
-          color: white;
-          background-color: $button_hover;
-          box-shadow: 0px 0px 20px  $button_hover;
-          top:2px;
-        }
+      &.button:active
+      {
+        color: white;
+        background-color: $button_hover;
+        box-shadow: 0px 0px 20px  $button_hover;
+        top:2px;
       }
     }
     .center
@@ -264,7 +219,7 @@ position: relative;
                 {
                   a{ display: block;}
                   a:link, a:visited{ color: $off_white; text-decoration:none;}
-                  height: 25px;
+                  height: 40px;
                   margin-bottom: 2px;
                   text-align: center;
                   text-shadow: $text_outline;

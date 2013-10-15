@@ -6,6 +6,7 @@ class Parentage < ActiveModel::Validator
  end
 end
 class Category < ActiveRecord::Base
+
   has_many :products
 
   has_many :children, class_name: 'Category', foreign_key: 'parent_id', dependent: :destroy

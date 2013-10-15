@@ -7,14 +7,18 @@
     <aside>
       <nav class='nav bar'>
         <ul>
-          <%= render 'nav', nav_locals %>
+          <% # render 'nav', nav_locals %>
+          <%= render_navigation({ styling: :vertical, wrap: ['li','test']}) %>
         </ul>
       </nav>
     </aside>
     <section class='center page'>
       <h1><%= @category ? @category.title : "All Items" %></h1>
       <section class='shelf'>
-        <%= render 'shelf', center_page_locals  %>
+        <%= render 'shelf', center_page_locals unless request.fullpath =~ /^\/shop_front\/.*/ || request.fullpath == ''%>
+        <%= render 'success', center_page_locals if request.fullpath =="/sucess" %>
+        <%= render 'error' if params[:error]%>
+        <%= render 'cancel' if request.fullpath == "/cancel"%>
       </section>
       <section class='pagination'>
         pagination goes here
