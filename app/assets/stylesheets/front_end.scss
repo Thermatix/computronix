@@ -1,41 +1,63 @@
 // page size constants
-$window_w: screen-width;
-$window_h: screen-height;
-$sideBars_w: 180px;
-$centerPage_w: 800px;
-$content_h: 1000px;
-$head_foot_h: 150px;
-$product_h:450px;
-$page_w: ($sideBars_w * 2) + $centerPage_w + 6px;
-$page_h: ($head_foot_h * 2) + $content_h + 6px;
-$sideBar_w: ($window_w - $page_w)/2;
+$sideBars_w: 180px; // Side bars width, ie: nav bar, info bar
+$centerPage_w: 800px; //width for the center where the products are shown
+$content_h: 1000px; // height for the whole of the content of the site
+$head_foot_h: 150px; // height for the page header and footer
+$product_h:450px; // height for the indiviual products as they are shown on the page
+$element_count: 3; // how many element columns make up the center page eg, 2 side bars and the center page
+$page_w: ($sideBars_w * 2) + $centerPage_w + (2px * $element_count) ; // the total page width for the whole site
+$page_h: ($head_foot_h * 2) + $content_h + (2px * $element_count) ; // the total page height for the whole site
+//page colours
+$text_color: #B6C0D2;
+$button: #003300; //button unselected
+$button_hover: #9CFF00; //button hover
+$background_colour: #1C263C;
+$colour_for_text_outline: black;
+$text_outline: 2px 0 0 $colour_for_text_outline, -2px 0 0 $colour_for_text_outline, 0 2px 0 $colour_for_text_outline, 0 -2px 0 $colour_for_text_outline, 1px 1px $colour_for_text_outline, -1px -1px 0 $colour_for_text_outline, 1px -1px 0 $colour_for_text_outline, -1px 1px 0 $colour_for_text_outline;
+$border_colour: #313C53;
+
+//paypal colours
+$dark_blue: #1D578C;
+$light_blue: #2489CA;
+$off_white: #F9F9F9;
+
 body
 {
+
   width: 100%;
+
 }
 .filler
 {
-background-color: black;
+background-color: $background_colour;
+position: relative;
 
   &.left
   {
+
+    float: left;
     display: inline-block;
-    width: $sideBar_w;
+    width: 10.1%;
     height: $page_h;
+    left:-10px;
   }
 
   &.right
   {
-
+    float: right;
+    right: -20px;
     display: inline-block;
-    width: $sideBar_w;
+    width: 10%;
     height: $page_h;
   }
 }
 
 .body
 {
-
+  background-color: $background_colour;
+  color: $text_color;
+  position: absolute;
+  left: 10%;
   display: inline-block;
   margin-left: auto;
   margin-right: auto;
@@ -47,7 +69,7 @@ background-color: black;
 
     &.bar
     {
-      border: 1px solid black;
+      border: 1px solid $border_colour;
       height: $head_foot_h;
       width: $page_w - 2px;
     }
@@ -63,17 +85,90 @@ background-color: black;
 
       &.bar
       {
-        list-style: none;
+
         float: left;
-        border: 1px solid black;
+        border: 1px solid $border_colour;
         width: $sideBars_w;
         height: $content_h;
+        background-color: $background_colour;
       }
 
       &.button
       {
-        text-align: left;
+        a{ display: block;}
+        a:link, a:visited{ color: $off_white; text-decoration:none;}
+        height: 25px;
+        margin-bottom: 2px;
+        margin-left: 0px;
+        text-shadow: $text_outline;
+        position: relative;
+
         padding-left:0px;
+        padding-top: 5px;
+        list-style: none;
+        margin-left: -29%;
+
+        &.nav_root
+        {
+
+          background-color: $button;
+        }
+
+        &.nav_major
+        {
+
+          background-color: $button;
+        }
+
+        &.nav_minor
+        {
+          background-color: $button;
+        }
+
+        &.nav_root:hover
+        {
+          background-color: $button_hover;
+          box-shadow: 0px 0px 10px  $button_hover;
+          bottom: 1px;
+        }
+
+        &.nav_major:hover
+        {
+          background-color: $button_hover;
+          box-shadow: 0px 0px 10px  $button_hover;
+          bottom: 1px;
+        }
+
+        &.nav_minor:hover
+        {
+          background-color: $button_hover;
+          box-shadow: 0px 0px 10px  $button_hover;
+          bottom: 1px;
+        }
+
+        &.nav_root:active
+        {
+          color: white;
+          background-color: $button_hover;
+          box-shadow: 0px 0px 20px  $button_hover;
+          top:2px;
+        }
+
+        &.nav_major:active
+        {
+          color: white;
+          background-color: $button_hover;
+          box-shadow: 0px 0px 20px  $button_hover;
+          top:2px;
+        }
+
+        &.nav_minor:active
+        {
+          color: white;
+          background-color: $button_hover;
+          box-shadow: 0px 0px 20px  $button_hover;
+          top:2px;
+        }
       }
     }
     .center
@@ -82,14 +177,29 @@ background-color: black;
       &.page
       {
         float: left;
-        border: 1px solid black;
+        border: 1px solid $border_colour;
         width: $centerPage_w;
         height: $content_h;
+        h1
+        {
+          color: white;
+          text-align: center;
+          font-size: 4em;
+          text-shadow: $text_outline;
+          margin-top: 0px;
+          margin-bottom: 0px;
+        }
       }
-
+      .shelf
+      {
+        overflow: scroll;
+        // width: $page_w ;
+        // height: $page_h - 30px;
+      }
       .product
       {
-        border: 1px solid black;
+        margin-left: -1px;
+        border: 1px solid $border_colour;
         width: 100%;
         height: $product_h;
         .infomation
@@ -97,7 +207,7 @@ background-color: black;
 
           .specification
           {
-            border: 1px solid black;
+            border: 1px solid $border_colour;
 
             float: left;
             width: 49.5%;
@@ -109,7 +219,7 @@ background-color: black;
 
             .images
             {
-              border: 1px solid black;
+              border: 1px solid $border_colour;
 
               overflow-x: auto;
               overflow: -moz-scrollbars-horizontal;
@@ -125,14 +235,14 @@ background-color: black;
 
             .description
             {
-              border: 1px solid black;
+              border: 1px solid $border_colour;
               margin: 5px;
             }
           }
 
           .attributes
           {
-            border: 1px solid black;
+            border: 1px solid $border_colour;
             float: right;
             width: 50%;
             height: $product_h;
@@ -147,11 +257,49 @@ background-color: black;
             }
             .actions
             {
+              .button
+              {
+
+                &.buy-paypal
+                {
+                  a{ display: block;}
+                  a:link, a:visited{ color: $off_white; text-decoration:none;}
+                  height: 25px;
+                  margin-bottom: 2px;
+                  text-align: center;
+                  text-shadow: $text_outline;
+                  position: relative;
+                  background-color: $dark_blue;
+                  padding-top: 5px;
+                  width: 150px;
+
+                }
+                &.buy-paypal:hover
+                {
+                  background-color: $light_blue;
+                  box-shadow: 0px 0px 10px  $light_blue;
+                  bottom: 1px;
+                }
+
+                &.buy-paypal:active
+                {
+                  background-color: $light_blue;
+                  box-shadow: 0px 0px 20px  $light_blue;
+                  top:2px;
+                }
+
+              }
 
             }
           }
         }
-
+      .pagination
+      {
+        position: absolute;
+        border: 1px solid $border_colour;
+        height: 40px;
+        width:$centerPage_w;
+      }
 
       }
     }
@@ -161,9 +309,10 @@ background-color: black;
       &.bar
       {
         float: left;
-        border: 1px solid black;
+        border: 1px solid $border_colour;
         width: $sideBars_w;
         height: $content_h;
+        background-color: $background_colour;
       }
 
     }
@@ -174,7 +323,7 @@ background-color: black;
 
     &.bar
     {
-      border: 1px solid black;
+      border: 1px solid $border_colour;
       height: $head_foot_h;
       width: $page_w - 2px;
     }

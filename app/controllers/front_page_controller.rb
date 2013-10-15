@@ -1,6 +1,3 @@
-require 'money'
-require 'money/bank/google_currency'
-require 'json'
 
 class FrontPageController < ApplicationController
 
