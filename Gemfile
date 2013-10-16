@@ -35,7 +35,7 @@ gem "friendly_id"#, "~> 4.0.10.1"
 
 gem "oauth", "~> 0.4.7"
 
- gem 'navGATE', path: "/Users/marbecker/.rvm/gems/ruby-2.0.0-p247/gems/navGATE-0.1.13"
+ gem 'navGATE'
 
 group :development, :test do
   # Use debugger

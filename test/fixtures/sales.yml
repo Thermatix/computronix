@@ -1,15 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
+  product_id: MyString
   payment_xid: MyString
-  payer_xid: MyString
-  first_name: MyString
-  last_name: MyString
-  payer_email: MyString
 
 two:
+  product_id: MyString
   payment_xid: MyString
-  payer_xid: MyString
-  first_name: MyString
-  last_name: MyString
-  payer_email: MyString

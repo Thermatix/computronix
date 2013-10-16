@@ -1,0 +1,9 @@
+<h1>Payment Successfull</h1>
+<% sale_total = 0%>
+Name             Value(GBP)
+<% @sale.products.each do |product| %>
+  <%= product.title %> <%= product.value %>
+  <% sale_total += product.value %>
+<% end %>
+Total value of sale = <%= sale_total %>
+

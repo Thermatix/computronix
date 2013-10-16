@@ -1,16 +1,40 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Computronix</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= stylesheet_link_tag    "front_end", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag 'setVisibility',"data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-
-<%= yield %>
-
-</body>
+  <head>
+    <title>Computronix</title>
+    <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+    <%= stylesheet_link_tag    "front_end", media: "all", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag 'setVisibility',"data-turbolinks-track" => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <aside class='filler left'>
+    </aside>
+    <section class='body'>
+      <section class='header bar'>
+      </section>
+      <section class='content'>
+        <aside>
+          <nav class='nav bar'>
+            <ul>
+              <%= render_navigation({ styling: :vertical, wrap: ['li','test']}) %>
+            </ul>
+          </nav>
+        </aside>
+        <section class='center page'>
+          <%= yield %>
+        <section class='pagination'>
+          pagination goes here
+        </section>
+      </section>
+      <aside class='info bar'>
+      </aside>
+    </section>
+    <section class='footer bar'>
+    </section>
+  </section>
+  <aside class='filler right'>
+  </adide>
+  </body>
 </html>
