@@ -6,12 +6,11 @@ Computronix::Application.routes.draw do
   get "/shop_category/:category_id", to: "front_page#index", as: 'nav'
   get '/setup', to: "setup#index"
 
-
-
   resources :payments do
     collection do
       get 'execute'
       get 'cancel'
+      post 'new', as: 'new'
     end
   end
   resources :sales do
