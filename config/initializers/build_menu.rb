@@ -14,7 +14,7 @@ NAVGATE = Navgate.new do |build|
    build.navs = [ Navgate::Builder.new do |options|
                   options[:selection] = {categories: :title }
                   options[:prefix] = 'shop_category'
-                  options[:controller] = 'front_page'
+                  options[:controller] = %w(front_page sales payments)
                   options[:by_id] = true
                   options[:css_class] = 'nav button'
                 end
