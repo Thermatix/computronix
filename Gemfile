@@ -35,7 +35,7 @@ gem "friendly_id"#, "~> 4.0.10.1"
 
 gem "oauth", "~> 0.4.7"
 
- gem 'navGATE'
+gem 'navGATE'
 
 group :development, :test do
   # Use debugger

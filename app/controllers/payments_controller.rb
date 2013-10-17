@@ -12,7 +12,6 @@ class PaymentsController < ApplicationController
   end
 
   def create
-    #what we want to see
     sale = ::Sale::Generator.new(params[:product_id] || session[:product_ids]).generate
     session[:sale_id] = sale.xid
     redirect_to sale.redirect_url
@@ -27,7 +26,7 @@ class PaymentsController < ApplicationController
       params[:sale_id] = @sale.id
       redirect_to sales_success_path(sale_id:  @sale.id)
     else
-      redirect_to :front_page, params[:error] = "Your payment was unable to be executed"
+      redirect_to :front_page, error: "Your payment was unable to be executed"
     end
   end
 

@@ -1,0 +1,6 @@
+Name  |   Quanity
+<% if session[:cart] %>
+  <% session[:cart][:products].each_with_index do |product,i| %>
+    <%= name_conversion_for(product) %> <%= session[:cart][:quantity][i] %>
+  <% end %>
+<% end %>
