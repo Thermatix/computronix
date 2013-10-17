@@ -8,35 +8,24 @@ class PaymentsController < ApplicationController
   end
 
   def new
-    if params[:one_click_Buy]
-      create
-    else
-      @payment = Payment.new
-    end
+    create
   end
 
   def create
-    if params[:one_click_Buy]
-      @payment = Payment.new Product.find(params[:one_click_Buy]).one_click_buy
-    else
-      # @payment = Payment.new (load_payment_params)
-    end
-
-    if @payment.create
-        redirect_url = @payment.links.find{|link| link.method == 'REDIRECT'}.href
-        ap "redirect to: #{redirect_url}"
-        session[:payment_id] = @payment.id
-        redirect_to redirect_url
-    else
-      redirect_to :front_page, params[:error] = "Youre payment was unable to be created"
-    end
+    #what we want to see
+    sale = ::Sale::Generator.new(params[:product_id] || session[:product_ids]).generate
+    session[:sale_id] = sale.xid
+    redirect_to sale.redirect_url
   end
 
   def execute
-    @payment = Payment.find(session[:payment_id])
-    if @payment.execute(payer_id: params[:PayerID])
-      session[:payment_id] = @payment.id
-      redirect_to "/payments/success"
+    @payment = Payment.find(session[:sale_id])
+    if @payment.execute(payer_id: params['PayerID'])
+      @sale = ::Sale.find_by_payment_xid(session[:sale_id])
+      @sale.payment_xid = @payment.id
+      @sale.save
+      params[:sale_id] = @sale.id
+      redirect_to sales_success_path(sale_id:  @sale.id)
     else
       redirect_to :front_page, params[:error] = "Your payment was unable to be executed"
     end
