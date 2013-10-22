@@ -11,7 +11,6 @@
   </thead>
   <tbody>
     <%= form_tag(carts_path,method: :patch,) do %>
-    <%= hidden_field_tag 'cart', true %>
       <% total_value = 0 %>
       <% cart.each do |product| %>
         <% id = product[:id] %>
@@ -19,22 +18,26 @@
         <% quant = product[:quantity].to_i %>
         <tr>
           <%= hidden_field_tag "product_id[]", product_model.id %>
-          <td><%= label_tag product_model.title %></td>
           <td>
-          <%= text_field_tag 'quantity[]', quant, maxlength: 2 %></td>
-
-          <td><%= label_tag product_model.value%></td>
+            <%= label_tag product_model.title %>
+          </td>
+          <td>
+          <%= text_field_tag 'quantity[]', quant, maxlength: 2 %>
+          </td>
+          <td>
+            <%= label_tag "#{cur_format product_model.value}" %>
+          </td>
           <% product_total_value = product_model.value.to_f * quant %>
-          <td><%= label_tag product_total_value %></td>
+          <td><%= label_tag "#{cur_format product_total_value}" %>
+          </td>
           <% total_value += product_total_value %>
         </tr>
       <% end %>
-
       <tr>
         <td></td>
         <td></td>
         <td>Total Value(GBP):</td>
-        <td><%= total_value %></td>
+        <td><%= cur_format total_value %></td>
       </tr>
       <tr>
         <td></td>

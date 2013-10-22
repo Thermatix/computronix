@@ -13,7 +13,7 @@
   </section>
   <section class='attributes'>
     <div class='value'>
-      <%= "Value(#{currency}):#{curr_convert((product.value||0.00),currency)}" %>
+      <%= "Value(#{currency}):#{currency_format_for product.value}" %>
     </div>
     <div class='stock'>
       <%= "Stock Level:#{product.stock}" %>

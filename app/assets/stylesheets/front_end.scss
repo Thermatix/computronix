@@ -268,6 +268,53 @@ position: relative;
         width: $sideBars_w;
         height: $content_h;
         background-color: $background_colour;
+
+        .small-cart
+        {
+          .table
+          {
+
+          }
+
+          .actions
+          {
+            .button
+            {
+
+              &.cart
+              {
+                display: block;
+                color: $off_white; text-decoration:none;
+                margin-bottom: 2px;
+                margin-left: 0px;
+                text-shadow: $text_outline;
+                position: relative;
+                width: 80%;
+                height: 25px;
+                text-align: center;
+                padding-left:0px;
+                padding-top: 5px;
+                background-color: $button;
+              }
+
+              &.cart:hover
+              {
+                background-color: $button_hover;
+                box-shadow: 0px 0px 10px  $button_hover;
+                bottom: 1px;
+              }
+
+              &.cart:active
+              {
+                color: white;
+                background-color: $button_hover;
+                box-shadow: 0px 0px 20px  $button_hover;
+                top:2px;
+              }
+            }
+          }
+        }
+
       }
 
     }

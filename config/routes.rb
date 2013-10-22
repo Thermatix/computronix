@@ -5,7 +5,7 @@ Computronix::Application.routes.draw do
   get "/shop_category/:category_id", to: "front_page#index", as: 'nav'
   get '/setup', to: "setup#index"
 
-
+  get '/cart', to: 'carts#index', as: 'cart'
   resource :carts, only: [:index,:update,:new] do
     get '/', to: "carts#index"
   end

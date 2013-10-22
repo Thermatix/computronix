@@ -1,18 +1,32 @@
-<table>
-  <thead>
-    <th>Name</th>
-    <th>Quanity</th>
-  </thead>
-  <tbody>
-    <% cart.each do |product| %>
-      <tr>
-        <td>
-        <%= Product.find(product[:id]).title %>
-        </td>
-        <td>
-          <%= product[:quantity] %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<section class='small-cart'>
+  <section class='table'>
+  <table>
+    <thead>
+      <th>Name</th>
+      <th>Quanity</th>
+      <th>Total Value<%= "\n(#{currency})" %></th>
+    </thead>
+    <tbody>
+      <% cart.each do |product| %>
+        <% product_model = Product.find(product[:id]) %>
+        <% quant = product[:quantity]  %>
+        <tr>
+          <td>
+          <%= product_model.title %>
+          </td>
+          <td>
+            <%= quant %>
+          </td>
+          <td>
+            <%=  "#{cur_format (product_model.value * quant.to_i) }"%>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  </section>
+  <section class='actions'>
+    <%= link_to 'Go to Cart', cart_path, class: 'button cart' %>
+  </section>
+</section>
+

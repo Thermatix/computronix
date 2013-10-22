@@ -5,12 +5,15 @@ class CartsController < ApplicationController
   end
 
   def update
-    if params[:cart]
+    if params[:product_id].is_a?(Array)
       cart =[]
       product_ids = params[:product_id]
       quant = params[:quantity].each {|q| q = q.to_i}
       product_ids.each_with_index do |id,i|
-        cart.push({id:id, quantity: quant[i]})
+        if quant[i].to_i < 1
+        else
+          cart.push({id:id, quantity: quant[i]})
+        end
       end
     else
       cart = session[:cart]
@@ -19,7 +22,9 @@ class CartsController < ApplicationController
       add_to_cart = true
       cart.each do |product|
         if product[:id] == id
-          product[:quantity] += quantity
+          quant = product[:quantity].to_i #this is here becuase I kept getting 'undefined method `to_i=' for "1":String', this fixes it
+          quant += quantity
+          product[:quantity] = quant.to_s
           add_to_cart = false
         end
       end

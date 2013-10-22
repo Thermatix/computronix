@@ -28,7 +28,7 @@ module FrontPageHelper
   end
 
   def center_page_locals
-    {categories: (@category || Category.roots),currency: @currency}
+    {categories: (@category || Category.roots)}
   end
 
   def set_visibility category, tree_level
