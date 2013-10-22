@@ -11,6 +11,9 @@ class PaymentsController < ApplicationController
     create
   end
 
+  def cancel
+  end
+
   def create
     sale = ::Sale::Generator.new(params[:product_id] || session[:product_ids]).generate
     session[:sale_id] = sale.xid

@@ -18,7 +18,7 @@
             <%= quant %>
           </td>
           <td>
-            <%=  "#{cur_format (product_model.value * quant.to_i) }"%>
+            <%=  "#{currency_format_for (product_model.value * quant.to_i) }"%>
           </td>
         </tr>
       <% end %>
@@ -27,6 +27,7 @@
   </section>
   <section class='actions'>
     <%= link_to 'Go to Cart', cart_path, class: 'button cart' %>
+    <%= link_to 'Clear Cart', carts_path, class: 'button cart', method: :delete %>
   </section>
 </section>
 

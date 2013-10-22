@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  helper_method :render_navigation, :currency, :curr_convert, :cart, :cur_format
+  helper_method :render_navigation, :currency, :curr_convert, :cart, :currency_format_for
   before_filter :make_menu, :cart?
 
 
@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
     temp.exchange_to(currency)
     temp
   end
-  def cur_format value
+  def currency_format_for value
     "#{'%.2f' % curr_convert(value,currency) }"
   end
 

@@ -18,7 +18,7 @@ class Sale::Generator
     total_value = 0
     items = {}
     [self.products].flatten.each_with_index do |product,i|
-      items = self.sale_object.hash_for_items(product,quantity_is_array(i))
+      items = self.sale_object.hash_for_items(product,quantity_is_array?(i))
       total_value += product.value
     end
     payment_hash = self.sale_object.payment_hash(self.payment,items,self.description,total_value)

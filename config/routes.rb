@@ -6,7 +6,7 @@ Computronix::Application.routes.draw do
   get '/setup', to: "setup#index"
 
   get '/cart', to: 'carts#index', as: 'cart'
-  resource :carts, only: [:index,:update,:new] do
+  resource :carts, only: [:index,:update,:new,:destroy] do
     get '/', to: "carts#index"
   end
 

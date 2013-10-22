@@ -25,10 +25,10 @@
           <%= text_field_tag 'quantity[]', quant, maxlength: 2 %>
           </td>
           <td>
-            <%= label_tag "#{cur_format product_model.value}" %>
+            <%= label_tag "#{currency_format_for product_model.value}" %>
           </td>
           <% product_total_value = product_model.value.to_f * quant %>
-          <td><%= label_tag "#{cur_format product_total_value}" %>
+          <td><%= label_tag "#{currency_format_for product_total_value}" %>
           </td>
           <% total_value += product_total_value %>
         </tr>
@@ -37,7 +37,7 @@
         <td></td>
         <td></td>
         <td>Total Value(GBP):</td>
-        <td><%= cur_format total_value %></td>
+        <td><%= currency_format_for total_value %></td>
       </tr>
       <tr>
         <td></td>

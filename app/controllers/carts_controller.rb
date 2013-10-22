@@ -41,7 +41,8 @@ class CartsController < ApplicationController
     redirect_to :root
   end
 
-  def delete
+  def destroy
+    new
   end
 
   private
