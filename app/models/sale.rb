@@ -40,6 +40,7 @@ class Sale < ActiveRecord::Base
 
   def hash_for_items product,quantity=1
     {
+
       name:product.title,
       sku: product.id,
       price: product.value,

@@ -24,17 +24,20 @@
         </aside>
         <section class='center page'>
           <%= yield %>
-        <section class='pagination'>
-          pagination goes here
+          <% if params[:controller] == 'front_page' %>
+            <section class='pagination'>
+              pagination goes here
+            </section>
+          <% end %>
         </section>
+        <aside class='info bar'>
+          <%= render 'carts/small_cart'%>
+        </aside>
       </section>
-      <aside class='info bar'>
-      </aside>
+      <section class='footer bar'>
+      </section>
     </section>
-    <section class='footer bar'>
-    </section>
-  </section>
-  <aside class='filler right'>
-  </adide>
+    <aside class='filler right'>
+    </adide>
   </body>
 </html>

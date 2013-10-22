@@ -13,7 +13,7 @@
   </section>
   <section class='attributes'>
     <div class='value'>
-      <%= "Value(#{currency}):#{curr_convert((product.value||0.00),currency)}" %>
+      <%= "Value(#{currency}):#{currency_format_for product.value}" %>
     </div>
     <div class='stock'>
       <%= "Stock Level:#{product.stock}" %>
@@ -21,6 +21,13 @@
     <section class='actions'>
       <div class='button buy-paypal'>
         <%= link_to 'One click checkout with Paypal', new_payments_path(product_id: product.id), method: :post %>
+      </div>
+      <div class='input quanity'>
+        <%= form_tag(carts_path,method: :patch,) do %>
+          <%= text_field_tag 'quantity', 1, maxlength: 2 %>
+          <%= hidden_field_tag 'product_id', product.id %>
+          <%= submit_tag "Add to cart", class: 'button add-to-cart' %>
+        <% end %>
       </div>
     </section>
   </section>

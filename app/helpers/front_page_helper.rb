@@ -28,18 +28,12 @@ module FrontPageHelper
   end
 
   def center_page_locals
-    {categories: (@category || Category.roots),currency: @currency}
+    {categories: (@category || Category.roots)}
   end
 
   def set_visibility category, tree_level
     "setVisibility(nav button nav_#{css_class(tree_level + 1)}, \"block\" )"
   end
 
-  def curr_convert value,currency
-    Money.default_bank = Money::Bank::GoogleCurrency.new
-    temp = value.to_money(:GBP)
-    temp.exchange_to(currency)
-    temp
-  end
 
 end

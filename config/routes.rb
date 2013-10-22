@@ -1,10 +1,15 @@
 Computronix::Application.routes.draw do
 
-  get "sales/cancel"
-  get "sales/success"
+
   get "/payments/new/:payment_id", to: "payments#new", as: 'one_click_buy'
   get "/shop_category/:category_id", to: "front_page#index", as: 'nav'
   get '/setup', to: "setup#index"
+
+  get '/cart', to: 'carts#index', as: 'cart'
+  resource :carts, only: [:index,:update,:new,:destroy] do
+    get '/', to: "carts#index"
+  end
+
 
   resources :payments do
     collection do
