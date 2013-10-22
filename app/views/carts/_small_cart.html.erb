@@ -1,0 +1,18 @@
+<table>
+  <thead>
+    <th>Name</th>
+    <th>Quanity</th>
+  </thead>
+  <tbody>
+    <% cart.each do |product| %>
+      <tr>
+        <td>
+        <%= Product.find(product[:id]).title %>
+        </td>
+        <td>
+          <%= product[:quantity] %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

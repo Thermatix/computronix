@@ -5,10 +5,13 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  helper_method :render_navigation
-  before_filter :cart, :make_menu
+  helper_method :render_navigation, :sorted_cart
+  before_filter :make_menu, :cart?
 
-  def cart
-    session[:cart] ||= {products: [], quantity: []}
+
+  def cart?
+    redirect_to new_cart_path if !session[:cart]
   end
+
+
 end
