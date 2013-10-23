@@ -28,8 +28,9 @@ class ApplicationController < ActionController::Base
   def cart
     @cart ||= session[:cart]
   end
+
   def cart?
-    redirect_to new_cart_path if !session[:cart]
+    redirect_to new_carts_path if !session[:cart]
   end
 
 

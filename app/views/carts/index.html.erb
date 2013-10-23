@@ -12,26 +12,28 @@
   <tbody>
     <%= form_tag(carts_path,method: :patch,) do %>
       <% total_value = 0 %>
-      <% cart.each do |product| %>
-        <% id = product[:id] %>
-        <% product_model = Product.find(id) %>
-        <% quant = product[:quantity].to_i %>
-        <tr>
-          <%= hidden_field_tag "product_id[]", product_model.id %>
-          <td>
-            <%= label_tag product_model.title %>
-          </td>
-          <td>
-          <%= text_field_tag 'quantity[]', quant, maxlength: 2 %>
-          </td>
-          <td>
-            <%= label_tag "#{currency_format_for product_model.value}" %>
-          </td>
-          <% product_total_value = product_model.value.to_f * quant %>
-          <td><%= label_tag "#{currency_format_for product_total_value}" %>
-          </td>
-          <% total_value += product_total_value %>
-        </tr>
+      <% if cart %>
+        <% cart.each do |product| %>
+          <% id = product[:id] %>
+          <% product_model = Product.find(id) %>
+          <% quant = product[:quantity].to_i %>
+          <tr>
+            <%= hidden_field_tag "product_id[]", product_model.id %>
+            <td>
+              <%= label_tag product_model.title %>
+            </td>
+            <td>
+            <%= text_field_tag 'quantity[]', quant, maxlength: 2 %>
+            </td>
+            <td>
+              <%= label_tag "#{currency_format_for product_model.value}" %>
+            </td>
+            <% product_total_value = product_model.value.to_f * quant %>
+            <td><%= label_tag "#{currency_format_for product_total_value}" %>
+            </td>
+            <% total_value += product_total_value %>
+          </tr>
+        <% end %>
       <% end %>
       <tr>
         <td></td>

@@ -7,20 +7,22 @@
       <th>Total Value<%= "\n(#{currency})" %></th>
     </thead>
     <tbody>
-      <% cart.each do |product| %>
-        <% product_model = Product.find(product[:id]) %>
-        <% quant = product[:quantity]  %>
-        <tr>
-          <td>
-          <%= product_model.title %>
-          </td>
-          <td>
-            <%= quant %>
-          </td>
-          <td>
-            <%=  "#{currency_format_for (product_model.value * quant.to_i) }"%>
-          </td>
-        </tr>
+      <% if cart %>
+        <% cart.each do |product| %>
+          <% product_model = Product.find(product[:id]) %>
+          <% quant = product[:quantity]  %>
+          <tr>
+            <td>
+            <%= product_model.title %>
+            </td>
+            <td>
+              <%= quant %>
+            </td>
+            <td>
+              <%=  "#{currency_format_for (product_model.value * quant.to_i) }"%>
+            </td>
+          </tr>
+        <% end %>
       <% end %>
     </tbody>
   </table>
